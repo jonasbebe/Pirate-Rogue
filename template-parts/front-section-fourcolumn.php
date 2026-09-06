@@ -51,11 +51,11 @@ $uku_section_fourcolumn_query = new WP_Query( array(
 							</div><!-- end .entry-thumbnail -->
 					<?php elseif ( ! post_password_required() && $imagesrc != '') : ?>
 							<div class="entry-thumbnail fadein" aria-hidden="true" role="presentation" tabindex="-1">
-								<a href="<?php the_permalink(); ?>"><span class="thumb-wrap"><img src="<?php echo $imagesrc; ?>" alt="<?php echo get_the_title();?>"></span></a>
-							</div><!-- end .entry-thumbnail -->
-					<?php endif; ?>
+								<a href="<?php the_permalink(); ?>"><span class="thumb-wrap"><img src="<?php echo esc_url( $imagesrc ); ?>" alt="<?php echo esc_attr( get_the_title() ); ?>"></span></a>
+								</div><!-- end .entry-thumbnail -->
+								<?php endif; ?>
 
-					<header class="entry-header">
+								<header class="entry-header">
 						<div class="entry-cats" itemprop="articleSection">
 							<?php the_category(' '); ?>
 						</div><!-- end .entry-cats -->

@@ -38,7 +38,7 @@
                     echo '<a href="'.$link.'">';
                 }
                 if ($imagesrc) {
-                    echo '<img src="'.$imagesrc.'" alt="'.$linktitle.'">';
+                    echo '<img src="' . esc_url($imagesrc) . '" alt="' . esc_attr($linktitle) . '">';
                 } elseif ( has_custom_logo() && '' != get_theme_mod( 'pirate_rogue_customlogofooter' ) ) {
                     $custom_logo_id = get_theme_mod( 'custom_logo' );
                     if ( $custom_logo_id ) {               
@@ -64,7 +64,7 @@
                 $button_text = esc_html($button_text);
                 
 		if (!empty($link) && (!empty($button_text)))  {
-                    echo '<a class="footer-feature-btn" href="'.$link.'">'.$button_text.'</a>';
+		    echo '<a class="footer-feature-btn" href="' . esc_url($link) . '">' . $button_text . '</a>';
                 } ?>
 	</div>
     </section>

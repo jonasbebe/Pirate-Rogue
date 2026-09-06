@@ -28,11 +28,11 @@
                 foreach ( $to_remove as $item ) {
                     $author_url = str_replace($item, '', $author_url);
                 }
-		echo '<a class="author-website" href=' . get_the_author_meta('user_url') .'><span class="fa fa-link"></span> '  . $author_url . ' </a>';
+		echo '<a class="author-website" href="' . esc_url(get_the_author_meta('user_url')) . '"><span class="fa fa-link"></span> '  . esc_html($author_url) . ' </a>';
 		?>
 		<?php endif; ?>
 		<?php if(get_the_author_meta('twitter') ): ?>
-			<a class="author-twitter" href="https://www.twitter.com/<?php echo get_the_author_meta('twitter'); ?>"><span class="fa fa-twitter"></span><?php echo get_the_author_meta('twitter'); ?></a>
+			<a class="author-twitter" href="https://www.twitter.com/<?php echo esc_attr( get_the_author_meta('twitter') ); ?>"><span class="fa fa-twitter"></span><?php echo esc_html( get_the_author_meta('twitter') ); ?></a>
 		<?php endif; ?>
 
 

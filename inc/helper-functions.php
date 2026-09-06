@@ -507,6 +507,6 @@ if ( ! function_exists( 'pirate_rogue_save_standard' ) ) :
 
 if ( ! function_exists( 'pirate_rogue_san' ) ) :  
     function pirate_rogue_san($s){
-	return filter_var(trim($s), FILTER_SANITIZE_STRING);
+	return htmlspecialchars(trim($s), ENT_QUOTES, 'UTF-8');
     }
 endif;    

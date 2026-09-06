@@ -76,7 +76,7 @@ $thumbfallbackid = absint(get_theme_mod( 'pirate_rogue_fallback_slider' ));
                      $imagesrc = wp_get_attachment_image_src( $thumbfallbackid, 'pirate-rogue-featured' )[0];
                 } ?>
                  <div class="entry-thumbnail fallback" role="presentation">
-                    <a href="<?php the_permalink(); ?>"><img src="<?php echo $imagesrc; ?>" alt="<?php echo get_the_title();?>"></a>     
+                    <a href="<?php the_permalink(); ?>"><img src="<?php echo esc_url( $imagesrc ); ?>" alt="<?php echo esc_attr( get_the_title() ); ?>"></a>     
                  </div>            
             <?php } ?>
 	<?php endif; ?>
