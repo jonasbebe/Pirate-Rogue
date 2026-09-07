@@ -23,8 +23,8 @@ if ($imagesrc) {
 		</div>
         <?php elseif ( ! post_password_required() &&  $imagesrc != '') : ?>
 		<div class="entry-thumbnail fadein fallback" aria-hidden="true" role="presentation" tabindex="-1">
-			<a href="<?php the_permalink(); ?>"><span class="thumb-wrap"><img src="<?php echo $imagesrc; ?>" alt="<?php echo get_the_title();?>"></span></a>
-		</div>       
+			<a href="<?php the_permalink(); ?>"><span class="thumb-wrap"><img src="<?php echo esc_url( $imagesrc ); ?>" alt="<?php echo esc_attr( get_the_title() ); ?>"></span></a>
+		</div>
 	<?php endif; ?>
 	<div class="meta-main-wrap">
                 <div class="entry-meta">

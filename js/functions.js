@@ -64,11 +64,6 @@
 		$('body').removeClass('overlay-show');
 	});
 
-	// Mobile Widget Area open/close
-	$('#offcanvas-widgets-open').on( 'click', function () {
-		$('body').toggleClass('offcanvas-widgets-show');
-	});
-
 	// Comments open/close
 	$('#comments-toggle').on( 'click', function () {
 		$('body').toggleClass('comments-show');
@@ -78,7 +73,7 @@
 		$('body').addClass('comments-show');
 	});
 
-	// Desktio Search open/close
+	// Desktop Search open/close
 	$('.search-open').on( 'click', function () {
 		$('body').toggleClass('desktop-search-show');
                 var searchInput = $('.desktop-search input#s');

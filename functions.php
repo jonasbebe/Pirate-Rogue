@@ -266,7 +266,7 @@ function pirate_rogue_google_verification() {
 	   $verificationcode =  get_theme_mod('pirate_rogue_google_wmt_verification_text'); 
 	} 
 	if (!empty($verificationcode)) {
-	    echo '<meta name="google-site-verification" content="'.$verificationcode.'" />'."\n";
+	    echo '<meta name="google-site-verification" content="'.esc_attr( $verificationcode ).'" />'."\n";
 	}
 }
 add_action( 'wp_head', 'pirate_rogue_google_verification');

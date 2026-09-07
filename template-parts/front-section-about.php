@@ -27,7 +27,7 @@
 		<div class="about-img-wrap" aria-hidden="true" role="presentation" tabindex="-1">
                     <?php if (!empty($imagesrc))  : ?>
                             <div class="front-about-img fadein">                    
-                                <img src="<?php echo $imagesrc; ?>" alt="">
+                                <img src="<?php echo esc_url( $imagesrc ); ?>" alt="">
                             </div><!-- end .front-about-img -->
                     <?php endif; ?>
 		</div><!-- end .about-img-wrap -->

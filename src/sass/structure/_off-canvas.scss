@@ -42,14 +42,27 @@
     opacity: 1;
 
   span {
-    display: none;
+    // Keep the label in the accessibility tree instead of display:none, so
+    // the icon-only button has an accessible name for screen readers.
+    @extend .screen-reader-text;
   }
   &:before {
     display: block;
   }
 }
 
-#overlay-open:before, 
+/* Visible keyboard focus indicator for the icon toggle buttons. outline:none
+   above hides the default ring, so restore a clear, on-brand ring. Scoped to
+   focus-visible so it only shows for keyboard users, not mouse clicks. */
+.overlay-btn,
+.search-open {
+  &:focus-visible {
+    outline: 3px solid $color-main;
+    outline-offset: 2px;
+  }
+}
+
+#overlay-open:before,
 #overlay-open-sticky:before {
   @include px2rem($font-size-overlay-icon);
   @extend .fa;
@@ -113,30 +126,12 @@
   padding-top: 20px;
 }
 
-#offcanvas-widgets-open {
-  margin-bottom: 20px;
-  outline: none;
-  width: 89.375%;
-  background: transparent;
-  display: block;
-  padding: 14px 0;
-  border: 2px solid #2b2b2b;
-  font-size: 15px;
-  font-size: 0.9375rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  text-align: center;
-}
-
+/* The off-canvas widget area is shown directly. It used to be collapsed
+   behind an "Info" toggle button that gave no visible feedback and was
+   redundant with the wider-screen behaviour, which already shows it. */
 .sidebar-offcanvas {
-  display: none;
-  padding: 0 0 30px;
-}
-
-.offcanvas-widgets-show .sidebar-offcanvas, 
-.mobilewidgets-show .sidebar-offcanvas {
   display: block;
+  padding: 0 0 30px;
 }
 
 /* --- Mobile Search --- */
@@ -300,11 +295,7 @@
       }
     }
   }
-  #offcanvas-widgets-open {
-	display: none;
-  }
   #sidebar-offcanvas {
-	display: block !important;
 	.widget {
 	    padding-left: 0;
 	    padding-right: 0;

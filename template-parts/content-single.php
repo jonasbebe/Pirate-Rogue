@@ -108,8 +108,13 @@ $custom_class = get_post_meta($post->ID, 'post_class', true);
                         }
                        ?>
 		</figure>
-	    <?php endif; ?>
-	    <div id="socialicons-sticky">
+		<?php endif; ?>
+		<div id="socialicons-sticky">
+			<?php if ( get_theme_mod( 'pirate_rogue_single_show_excerpt' ) && has_excerpt() ) : ?>
+			<div class="entry-summary single-excerpt" itemprop="description">
+				<?php the_excerpt(); ?>
+			</div><!-- end .entry-summary -->
+			<?php endif; ?>
 			<div id="entry-content" class="entry-content" itemprop="text">
 			    <?php    
 			    the_content();

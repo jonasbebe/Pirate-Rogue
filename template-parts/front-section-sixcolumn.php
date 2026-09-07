@@ -49,8 +49,8 @@ if ($imagesrc) {
                                         </div><!-- end .entry-thumbnail -->
                                 <?php elseif ( ! post_password_required() && $imagesrc != '') : ?>
                                         <div class="entry-thumbnail fadein" aria-hidden="true" role="presentation" tabindex="-1">
-                                                <a href="<?php the_permalink(); ?>"><span class="thumb-wrap"><img src="<?php echo $imagesrc; ?>" alt="<?php echo get_the_title();?>"></span></a>
-                                        </div><!-- end .entry-thumbnail -->	
+                                                <a href="<?php the_permalink(); ?>"><span class="thumb-wrap"><img src="<?php echo esc_url( $imagesrc ); ?>" alt="<?php echo esc_attr( get_the_title() ); ?>"></span></a>
+                                        </div><!-- end .entry-thumbnail -->
 
 				<?php endif; ?>
 

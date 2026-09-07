@@ -27,7 +27,7 @@
 
 	    ?>
 		<div class="custom-logo-wrap" aria-hidden="true" role="presentation">
-			<img src="<?php echo $imagesrc; ?>" alt="">
+			<img src="<?php echo esc_url( $imagesrc ); ?>" alt="">
 		</div>
 	<?php } else { ?>
                 <p class="title-footer">
