@@ -517,7 +517,10 @@ function pirate_rogue_get_image_attributs($id=0) {
 	}   
 
         if (isset($meta['_wp_attachment_metadata']) && is_array($meta['_wp_attachment_metadata'])) {        
-	    $data = unserialize($meta['_wp_attachment_metadata'][0]);
+	    $data = maybe_unserialize( $meta['_wp_attachment_metadata'][0] );
+	    if ( ! is_array( $data ) ) {
+	        $data = array();
+	    }
 	    if (isset($data['image_meta']) && is_array($data['image_meta'])) {
 		if (isset($data['image_meta']['copyright'])) {
 		       $result['copyright'] = trim(strip_tags($data['image_meta']['copyright']));
@@ -582,12 +585,12 @@ function pirate_rogue_array2table($array, $table = true) {
     $tableHeader = '';
     foreach ($array as $key => $value) {
 	 $out .= '<tr>';
-	 $out .= "<th>$key</th>";
+	 $out .= '<th>' . esc_html( $key ) . '</th>';
         if (is_array($value)) {   
             if (!isset($tableHeader)) {
                 $tableHeader =
                     '<th>' .
-                    implode('</th><th>', array_keys($value)) .
+                    implode('</th><th>', array_map( 'esc_html', array_keys($value) ) ) .
                     '</th>';
             }
             array_keys($value);
@@ -595,7 +598,7 @@ function pirate_rogue_array2table($array, $table = true) {
             $out .= pirate_rogue_array2table($value, true);     
 	    $out .= "</td>";
         } else {
-            $out .= "<td>$value</td>";
+            $out .= '<td>' . esc_html( $value ) . '</td>';
         }
 	$out .= '</tr>';
     }

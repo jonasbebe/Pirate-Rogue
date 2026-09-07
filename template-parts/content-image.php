@@ -63,7 +63,10 @@ $custom_class = get_post_meta($post->ID, 'post_class', true);
 
                                         if (isset($meta) && isset($meta['_wp_attachment_metadata']) 
                                                 && is_array($meta['_wp_attachment_metadata'])) { 
-                                            $data = unserialize($meta['_wp_attachment_metadata'][0]);
+                                            $data = maybe_unserialize( $meta['_wp_attachment_metadata'][0] );
+                                            if ( ! is_array( $data ) ) {
+                                                $data = array();
+                                            }
                                             echo pirate_rogue_array2table($data['image_meta']);
                                             echo "<h3>".__('Image Sizes','pirate-rogue')."</h3>\n";
                                             echo pirate_rogue_array2table($data['sizes']);
@@ -80,37 +83,37 @@ $custom_class = get_post_meta($post->ID, 'post_class', true);
                                     <table>
                                         <tr>
                                             <th><?php _e('Title','pirate-rogue');?></th>
-                                            <td><?php echo $imgdata['title']; ?></td>
+                                            <td><?php echo esc_html( $imgdata['title'] ); ?></td>
                                         </tr>
                                         <?php if(!empty($imgdata['caption'])) { ?>
                                         <tr>
                                             <th><?php _e('Caption','pirate-rogue');?></th>
-                                            <td><?php echo $imgdata['caption']; ?></td>
+                                            <td><?php echo esc_html( $imgdata['caption'] ); ?></td>
                                         </tr>
                                         <?php } ?>
                                         <?php if(!empty($imgdata['excerpt'])) { ?>
                                         <tr>
                                             <th><?php _e('Excerpt','pirate-rogue');?></th>
-                                            <td><?php echo $imgdata['excerpt']; ?></td>
+                                            <td><?php echo esc_html( $imgdata['excerpt'] ); ?></td>
                                         </tr>
                                         <?php } ?>
                                         <?php if(!empty($imgdata['description'])) { ?>
                                         <tr>
                                             <th><?php _e('Description','pirate-rogue');?></th>
-                                            <td><?php echo $imgdata['description']; ?></td>
+                                            <td><?php echo esc_html( $imgdata['description'] ); ?></td>
                                         </tr>
                                         <?php } ?>
                                         <?php if(!empty($imgdata['copyright'])) { ?>
                                         <tr>
                                             <th><?php _e('Copyright','pirate-rogue');?></th>
-                                            <td><?php echo $imgdata['copyright']; ?></td>
+                                            <td><?php echo esc_html( $imgdata['copyright'] ); ?></td>
                                         </tr>
-                                        <?php } 		
-					?>
-					<tr>
-					    <th><?php _e('Download','pirate-rogue');?></th>
-					    <td><a href="<?php echo $imgdata['src']; ?>"><?php echo $imgdata['title']; ?> (<?php _e('Size','pirate-rogue');?> <?php echo $imgdata['width']; ?> x <?php echo $imgdata['height']; ?>)</a></td>
-					</tr>
+                                        <?php } 				
+						?>
+						<tr>
+						    <th><?php _e('Download','pirate-rogue');?></th>
+						    <td><a href="<?php echo esc_url( $imgdata['src'] ); ?>"><?php echo esc_html( $imgdata['title'] ); ?> (<?php _e('Size','pirate-rogue');?> <?php echo esc_html( $imgdata['width'] ); ?> x <?php echo esc_html( $imgdata['height'] ); ?>)</a></td>
+						</tr>
                                     </table>
 
 				<?php
